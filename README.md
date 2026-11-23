@@ -1,4 +1,4 @@
-# Shaik Ahmad — Portfolio Demo
+# Portfolio Template 1
 
 A responsive personal portfolio demo with a small rule-based portfolio assistant.
 
