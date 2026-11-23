@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Shaik Ahmad — frontend developer building thoughtful, responsive web experiences."
+    />
+    <title>Shaik Ahmad — Frontend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0d0e;
+        --surface: #121617;
+        --surface2: #181e1f;
+        --text: #edf2ee;
+        --muted: #9ba8a2;
+        --line: #283130;
+        --lime: #c7f36b;
+        --cyan: #8bd8ce;
+        --max: 1120px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+      .wrap {
+        width: min(var(--max), calc(100% - 44px));
+        margin: auto;
+      }
+      .mono,
+      .eyebrow,
+      .nav a,
+      .pill,
+      .meta,
+      .tag {
+        font-family: "DM Mono", monospace;
+      }
+      .nav-shell {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: #0b0d0eef;
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+      nav {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        font-family: Manrope;
+        font-weight: 800;
+        font-size: 17px;
+        letter-spacing: -0.8px;
+      }
+      .brand span {
+        color: var(--lime);
+      }
+      .navlinks {
+        display: flex;
+        gap: 28px;
+      }
+      .navlinks a {
+        font-size: 11px;
+        color: var(--muted);
+        transition: 0.2s;
+      }
+      .navlinks a:hover {
+        color: var(--lime);
+      }
+      .nav-cta {
+        border: 1px solid #52604a;
+        color: var(--lime);
+        padding: 11px 15px;
+        font: 11px "DM Mono";
+        transition: 0.2s;
+      }
+      .nav-cta:hover {
+        background: var(--lime);
+        color: #111;
+      }
+      .menu {
+        display: none;
+        background: none;
+        border: 1px solid var(--line);
+        color: white;
+        padding: 9px 12px;
+      }
+      .hero {
+        padding: 105px 0 90px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        width: 570px;
+        height: 570px;
+        right: -120px;
+        top: 15px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(199, 243, 107, 0.12),
+          transparent 67%
+        );
+        pointer-events: none;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: var(--lime);
+        text-transform: uppercase;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 70px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      .hero h1 {
+        font: 800 clamp(54px, 8vw, 94px)/0.99 Manrope;
+        letter-spacing: -5px;
+        margin: 25px 0 24px;
+      }
+      .hero h1 span {
+        color: var(--lime);
+      }
+      .lead {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #b4bfba;
+        max-width: 590px;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--lime);
+        color: #10140d;
+        font: 500 11px "DM Mono";
+        border: 1px solid var(--lime);
+        transition: 0.2s;
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px #c7f36b22;
+      }
+      .btn.secondary {
+        background: transparent;
+        color: var(--text);
+        border-color: var(--line);
+      }
+      .btn.secondary:hover {
+        border-color: var(--lime);
+        color: var(--lime);
+        box-shadow: none;
+      }
+      .profile-card {
+        background: linear-gradient(145deg, #1c2622, #111617);
+        border: 1px solid #33403a;
+        padding: 26px;
+        max-width: 330px;
+        justify-self: end;
+        width: 100%;
+        position: relative;
+      }
+      .avatar {
+        height: 210px;
+        background: linear-gradient(145deg, #26372e, #131a18);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .avatar:before {
+        content: "SA";
+        font: 800 100px Manrope;
+        color: #c7f36b22;
+        letter-spacing: -10px;
+      }
+      .avatar:after {
+        content: "AVAILABLE FOR SELECT PROJECTS";
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        font: 9px "DM Mono";
+        color: var(--lime);
+        letter-spacing: 1px;
+      }
+      .card-name {
+        font: 700 20px Manrope;
+      }
+      .card-role {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 5px;
+      }
+      .card-foot {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--line);
+        padding-top: 17px;
+        margin-top: 20px;
+        font: 10px "DM Mono";
+        color: var(--muted);
+      }
+      .card-foot b {
+        color: var(--lime);
+        font-weight: 400;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 24px 0;
+        margin-top: 65px;
+      }
+      .metric strong {
+        display: block;
+        font: 700 24px Manrope;
+        color: var(--lime);
+      }
+      .metric span {
+        font: 10px "DM Mono";
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .section {
+        padding: 95px 0;
+      }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 30px;
+        margin-bottom: 35px;
+      }
+      .section h2 {
+        font: 800 clamp(35px, 5vw, 54px)/1.05 Manrope;
+        letter-spacing: -2.5px;
+        margin: 12px 0 0;
+      }
+      .section-intro {
+        max-width: 380px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+        margin: 0;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 75px;
+      }
+      .about-copy {
+        font-size: 14px;
+        line-height: 1.9;
+        color: #b4bfba;
+      }
+      .about-copy p {
+        margin-top: 0;
+      }
+      .skill-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 24px;
+      }
+      .pill {
+        border: 1px solid var(--line);
+        padding: 9px 12px;
+        font-size: 10px;
+        color: #c8d2cc;
+      }
+      .skill-group {
+        margin-bottom: 24px;
+      }
+      .skill-group h3 {
+        font: 11px "DM Mono";
+        color: var(--lime);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 17px;
+      }
+      .project {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        transition: 0.25s;
+        overflow: hidden;
+      }
+      .project:hover {
+        transform: translateY(-5px);
+        border-color: #61744b;
+      }
+      .project-visual {
+        height: 220px;
+        background: linear-gradient(135deg, #1b2724, #111617);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-visual .mock {
+        width: 72%;
+        height: 72%;
+        border: 1px solid #56654b;
+        background: #131918;
+        box-shadow: 0 20px 50px #0008;
+        padding: 16px;
+        transform: rotate(-3deg);
+      }
+      .mock-top {
+        height: 9px;
+        width: 35%;
+        background: var(--lime);
+        margin-bottom: 16px;
+      }
+      .mock-lines {
+        height: 7px;
+        background: #34403b;
+        margin: 9px 0;
+        width: 80%;
+      }
+      .mock-lines.short {
+        width: 48%;
+      }
+      .mock-boxes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+        margin-top: 18px;
+      }
+      .mock-boxes i {
+        display: block;
+        height: 52px;
+        background: #26352d;
+        border: 1px solid #3c5542;
+      }
+      .project-visual.alt {
+        background: linear-gradient(135deg, #1b222e, #11151a);
+      }
+      .project-visual.alt .mock-top {
+        background: var(--cyan);
+      }
+      .project-visual.alt .mock-boxes i {
+        background: #23303a;
+        border-color: #3c5360;
+      }
+      .project-visual.third {
+        background: linear-gradient(135deg, #30251c, #171411);
+      }
+      .project-visual.third .mock-top {
+        background: #e8a66e;
+      }
+      .project-visual.fourth {
+        background: linear-gradient(135deg, #242032, #15131b);
+      }
+      .project-visual.fourth .mock-top {
+        background: #bba6f4;
+      }
+      .project-body {
+        padding: 23px;
+      }
+      .project-meta {
+        display: flex;
+        justify-content: space-between;
+        color: var(--lime);
+        font: 9px "DM Mono";
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .project h3 {
+        font: 700 22px Manrope;
+        margin: 13px 0 9px;
+      }
+      .project p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.8;
+        margin: 0 0 17px;
+      }
+      .tags {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .tag {
+        font-size: 9px;
+        color: #9ba8a2;
+        background: #202827;
+        padding: 6px 8px;
+      }
+      .note {
+        font-size: 10px;
+        color: #77837d;
+        margin-top: 22px;
+        font-family: "DM Mono";
+      }
+      .experience {
+        border-top: 1px solid var(--line);
+      }
+      .exp-row {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 30px;
+        padding: 27px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .exp-date {
+        font: 10px "DM Mono";
+        color: var(--lime);
+      }
+      .exp-row h3 {
+        font: 700 18px Manrope;
+        margin: 0 0 7px;
+      }
+      .exp-row p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.8;
+        margin: 0;
+      }
+      .contact {
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 65px;
+      }
+      .contact p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+      .contact-links {
+        margin-top: 30px;
+      }
+      .contact-links a {
+        display: block;
+        color: var(--lime);
+        font: 12px "DM Mono";
+        margin: 14px 0;
+      }
+      .contact-form {
+        display: grid;
+        gap: 13px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        background: #0d1111;
+        border: 1px solid var(--line);
+        color: white;
+        padding: 14px;
+        outline: none;
+        font-size: 12px;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: var(--lime);
+      }
+      .contact-form textarea {
+        min-height: 115px;
+        resize: vertical;
+      }
+      .contact-form button {
+        justify-content: center;
+      }
+      .footer {
+        padding: 25px 0;
+        color: #748078;
+        font: 10px "DM Mono";
+      }
+      .footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .assistant-launch {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 30;
+        background: var(--lime);
+        color: #111;
+        border: 0;
+        border-radius: 99px;
+        padding: 14px 18px;
+        font: 11px "DM Mono";
+        box-shadow: 0 8px 30px #0008;
+      }
+      .chat {
+        position: fixed;
+        right: 24px;
+        bottom: 83px;
+        width: min(350px, calc(100vw - 32px));
+        height: 440px;
+        background: #111817;
+        border: 1px solid #3c4b43;
+        z-index: 31;
+        display: none;
+        flex-direction: column;
+        box-shadow: 0 20px 70px #000a;
+      }
+      .chat.open {
+        display: flex;
+      }
+      .chat-head {
+        padding: 16px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font: 11px "DM Mono";
+        color: var(--lime);
+      }
+      .chat-head button {
+        background: none;
+        border: 0;
+        color: white;
+        font-size: 20px;
+      }
+      .chat-body {
+        padding: 15px;
+        flex: 1;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .bubble {
+        max-width: 90%;
+        padding: 11px 12px;
+        background: #202a26;
+        color: #dce5df;
+        font-size: 11px;
+        line-height: 1.7;
+      }
+      .bubble.user {
+        align-self: flex-end;
+        background: #d7f69a;
+        color: #111;
+      }
+      .chat-form {
+        display: flex;
+        border-top: 1px solid var(--line);
+      }
+      .chat-form input {
+        flex: 1;
+        min-width: 0;
+        background: #0d1111;
+        border: 0;
+        padding: 14px;
+        color: white;
+        font-size: 11px;
+        outline: none;
+      }
+      .chat-form button {
+        background: var(--lime);
+        border: 0;
+        padding: 0 16px;
+        font: 11px "DM Mono";
+      }
+      .mobile-menu {
+        display: none;
+      }
+      @media (max-width: 760px) {
+        .navlinks,
+        .nav-cta {
+          display: none;
+        }
+        .menu {
+          display: block;
+        }
+        .mobile-menu {
+          position: absolute;
+          top: 76px;
+          left: 0;
+          right: 0;
+          background: #101515;
+          padding: 22px;
+          display: none;
+          border-bottom: 1px solid var(--line);
+        }
+        .mobile-menu.open {
+          display: grid;
+          gap: 18px;
+        }
+        .mobile-menu a {
+          font: 12px "DM Mono";
+          color: var(--muted);
+        }
+        .hero {
+          padding: 75px 0 65px;
+        }
+        .hero-grid,
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .profile-card {
+          justify-self: start;
+          max-width: 100%;
+        }
+        .avatar {
+          height: 150px;
+        }
+        .hero h1 {
+          letter-spacing: -3px;
+        }
+        .metrics {
+          margin-top: 45px;
+        }
+        .metric strong {
+          font-size: 20px;
+        }
+        .metric span {
+          font-size: 8px;
+        }
+        .section {
+          padding: 70px 0;
+        }
+        .section-head {
+          display: block;
+        }
+        .section-intro {
+          margin-top: 18px;
+        }
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+        .project-visual {
+          height: 190px;
+        }
+        .exp-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .footer .wrap {
+          flex-direction: column;
+        }
+        .assistant-launch {
+          right: 15px;
+          bottom: 15px;
+        }
+        .chat {
+          right: 16px;
+          bottom: 72px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav-shell">
+      <div class="wrap">
+        <nav>
+          <a class="brand" href="#home">shaik<span>.</span>ahmad</a>
+          <div class="navlinks">
+            <a href="#about">ABOUT</a><a href="#work">WORK</a
+            ><a href="#skills">SKILLS</a><a href="#experience">EXPERIENCE</a>
+          </div>
+          <a class="nav-cta" href="#contact">LET'S TALK ↗</a
+          ><button class="menu" id="menuBtn">MENU</button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+          <a href="#about">ABOUT</a><a href="#work">WORK</a
+          ><a href="#skills">SKILLS</a><a href="#experience">EXPERIENCE</a
+          ><a href="#contact">CONTACT</a>
+        </div>
+      </div>
+    </div>
+    <main>
+      <section class="hero" id="home">
+        <div class="wrap">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow">FRONTEND DEVELOPER · INDIA</div>
+              <h1>Building the web,<br /><span>one detail</span> at a time.</h1>
+              <p class="lead">
+                I’m Shaik Ahmad — a frontend-focused developer who enjoys
+                turning ideas into clean, responsive and useful digital
+                experiences.
+              </p>
+              <div class="actions">
+                <a class="btn" href="#work">EXPLORE MY WORK ↗</a
+                ><a class="btn secondary" href="#contact">GET IN TOUCH</a>
+              </div>
+            </div>
+            <aside class="profile-card">
+              <div class="avatar"></div>
+              <div class="card-name">Shaik Reddy Ahmad</div>
+              <div class="card-role">Frontend / Web Developer</div>
+              <div class="card-foot">
+                <span>BASED IN INDIA</span><b>OPEN TO OPPORTUNITIES</b>
+              </div>
+            </aside>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <strong>React</strong><span>Frontend focus</span>
+            </div>
+            <div class="metric">
+              <strong>Full-stack</strong><span>Growing skillset</span>
+            </div>
+            <div class="metric">
+              <strong>Web</strong><span>What I build</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="about">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">01 / A LITTLE ABOUT ME</div>
+              <h2>Curious by nature.<br />Builder by choice.</h2>
+            </div>
+            <p class="section-intro">
+              I care about the details users notice — clear layouts, thoughtful
+              interactions and experiences that work across devices.
+            </p>
+          </div>
+          <div class="about-grid">
+            <div class="about-copy">
+              <p>
+                I’m a web developer based in India, working across modern
+                frontend technologies and exploring full-stack development. I
+                enjoy learning how products work from the interface down to the
+                data behind them.
+              </p>
+              <p>
+                My approach is practical: understand the goal, keep the
+                experience simple, write maintainable code and keep improving
+                through real projects.
+              </p>
+              <p>
+                This portfolio is a live demo concept. Project descriptions and
+                links should be updated with final public repositories and
+                verified project details before using it as a formal CV.
+              </p>
+            </div>
+            <div id="skills">
+              <div class="skill-group">
+                <h3>Frontend</h3>
+                <div class="skill-wrap">
+                  <span class="pill">HTML</span><span class="pill">CSS</span
+                  ><span class="pill">JavaScript</span
+                  ><span class="pill">React</span
+                  ><span class="pill">Next.js</span
+                  ><span class="pill">Vite</span
+                  ><span class="pill">Tailwind CSS</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <h3>Backend & Data</h3>
+                <div class="skill-wrap">
+                  <span class="pill">Node.js</span
+                  ><span class="pill">Express</span
+                  ><span class="pill">MongoDB</span
+                  ><span class="pill">MySQL</span
+                  ><span class="pill">PostgreSQL</span
+                  ><span class="pill">Prisma</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <h3>Tools & Workflow</h3>
+                <div class="skill-wrap">
+                  <span class="pill">Git</span><span class="pill">GitHub</span
+                  ><span class="pill">REST APIs</span
+                  ><span class="pill">Google Apps Script</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="work" style="background: #0e1212">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">02 / SELECTED PROJECTS</div>
+              <h2>Things I’ve been<br />building.</h2>
+            </div>
+            <p class="section-intro">
+              A selection of demo and development projects that show the kinds
+              of interfaces and workflows I enjoy creating.
+            </p>
+          </div>
+          <div class="project-grid">
+            <article class="project">
+              <div class="project-visual">
+                <div class="mock">
+                  <div class="mock-top"></div>
+                  <div class="mock-lines"></div>
+                  <div class="mock-lines short"></div>
+                  <div class="mock-boxes"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-meta">
+                  <span>01 / BUSINESS WEBSITE</span><span>DEMO</span>
+                </div>
+                <h3>Ironvault Fitness</h3>
+                <p>
+                  A responsive gym equipment storefront concept with product
+                  categories, an interactive demo cart, services and enquiry
+                  form.
+                </p>
+                <div class="tags">
+                  <span class="tag">HTML</span><span class="tag">CSS</span
+                  ><span class="tag">JavaScript</span>
+                </div>
+              </div>
+            </article>
+            <article class="project">
+              <div class="project-visual alt">
+                <div class="mock">
+                  <div class="mock-top"></div>
+                  <div class="mock-lines"></div>
+                  <div class="mock-lines short"></div>
+                  <div class="mock-boxes"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-meta">
+                  <span>02 / PRODUCTIVITY APP</span><span>IN DEVELOPMENT</span>
+                </div>
+                <h3>Task Management System</h3>
+                <p>
+                  A task workflow concept covering role-based access, task
+                  assignment, approvals, team workflows and notifications.
+                </p>
+                <div class="tags">
+                  <span class="tag">React</span><span class="tag">Node.js</span
+                  ><span class="tag">MySQL</span>
+                </div>
+              </div>
+            </article>
+            <article class="project">
+              <div class="project-visual third">
+                <div class="mock">
+                  <div class="mock-top"></div>
+                  <div class="mock-lines"></div>
+                  <div class="mock-lines short"></div>
+                  <div class="mock-boxes"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-meta">
+                  <span>03 / AUTOMATION TOOL</span><span>PROJECT</span>
+                </div>
+                <h3>Vendor Image Manager</h3>
+                <p>
+                  A utility concept for organizing vendor image workflows and
+                  supporting repeatable image upload processes.
+                </p>
+                <div class="tags">
+                  <span class="tag">Google Apps Script</span
+                  ><span class="tag">Google Sheets</span>
+                </div>
+              </div>
+            </article>
+            <article class="project">
+              <div class="project-visual fourth">
+                <div class="mock">
+                  <div class="mock-top"></div>
+                  <div class="mock-lines"></div>
+                  <div class="mock-lines short"></div>
+                  <div class="mock-boxes"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="project-meta">
+                  <span>04 / WEB APPLICATION</span><span>DEMO</span>
+                </div>
+                <h3>Food Order App</h3>
+                <p>
+                  A React application concept focused on presenting food items
+                  and creating a straightforward ordering experience.
+                </p>
+                <div class="tags">
+                  <span class="tag">React</span
+                  ><span class="tag">JavaScript</span
+                  ><span class="tag">CSS</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="note">
+            PROJECT STATUS LABELS ARE DEMO COPY — ADD VERIFIED LIVE LINKS BEFORE
+            PUBLIC USE.
+          </div>
+        </div>
+      </section>
+      <section class="section" id="experience">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">03 / EXPERIENCE</div>
+              <h2>Learning through<br />real-world work.</h2>
+            </div>
+            <p class="section-intro">
+              A short overview of professional experience and structured
+              learning.
+            </p>
+          </div>
+          <div class="experience">
+            <div class="exp-row">
+              <div class="exp-date">JUN 2025 — PRESENT</div>
+              <div>
+                <h3>
+                  Junior Software Developer · Hourglass Essentials Pvt. Ltd.
+                </h3>
+                <p>
+                  Working on web development and internal business application
+                  workflows, with exposure to frontend development, integrations
+                  and operational systems.
+                </p>
+              </div>
+            </div>
+            <div class="exp-row">
+              <div class="exp-date">FEB 2024 — AUG 2024</div>
+              <div>
+                <h3>Web Development Training · Apponix Technologies</h3>
+                <p>
+                  Structured training in web development fundamentals and modern
+                  application development concepts.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section contact" id="contact">
+        <div class="wrap contact-grid">
+          <div>
+            <div class="eyebrow">04 / HAVE A PROJECT?</div>
+            <h2>Let's make<br />something useful.</h2>
+            <p>
+              Have an idea, a role or a project in mind? Send a message and
+              let's talk about what you need.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:hello@example.com">hello@example.com ↗</a
+              ><a
+                href="https://github.com/the-shaikahmad"
+                target="_blank"
+                rel="noreferrer"
+                >GITHUB PROFILE ↗</a
+              >
+            </div>
+            <div class="note">
+              Replace the placeholder email with your preferred public contact
+              address.
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <input name="name" placeholder="Your name" required /><input
+              name="email"
+              type="email"
+              placeholder="Your email"
+              required
+            /><textarea
+              name="message"
+              placeholder="Tell me a little about your project..."
+              required
+            ></textarea
+            ><button class="btn" type="submit">PREPARE EMAIL ↗</button>
+            <div class="note" id="formNote">
+              This demo opens your email app; it does not store submissions.
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <span>© 2026 SHAIK AHMAD · PORTFOLIO DEMO</span
+        ><span>DESIGNED & BUILT FOR THE WEB ↗</span>
+      </div>
+    </footer>
+    <button class="assistant-launch" id="assistantLaunch">
+      ASK MY AI ASSISTANT ✳
+    </button>
+    <section class="chat" id="chat">
+      <div class="chat-head">
+        <span>PORTFOLIO ASSISTANT · DEMO</span><button id="chatClose">×</button>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="bubble">
+          Hi! I'm a demo assistant. Ask me about Shaik's skills, projects or
+          experience.
+        </div>
+      </div>
+      <form class="chat-form" id="chatForm">
+        <input
+          id="chatInput"
+          placeholder="Ask about my work..."
+          autocomplete="off"
+        /><button>SEND</button>
+      </form>
+    </section>
+    <script>
+      const $ = (s) => document.querySelector(s);
+      $("#menuBtn").addEventListener("click", () =>
+        $("#mobileMenu").classList.toggle("open"),
+      );
+      document
+        .querySelectorAll("#mobileMenu a")
+        .forEach((a) =>
+          a.addEventListener("click", () =>
+            $("#mobileMenu").classList.remove("open"),
+          ),
+        );
+      $("#assistantLaunch").onclick = () => $("#chat").classList.toggle("open");
+      $("#chatClose").onclick = () => $("#chat").classList.remove("open");
+      function reply(q) {
+        q = q.toLowerCase();
+        if (/skill|technology|stack|tech/.test(q))
+          return "Shaik's listed skills include HTML, CSS, JavaScript, React, Next.js, Vite, Tailwind CSS, Node.js, Express, MongoDB, MySQL, PostgreSQL and Prisma.";
+        if (/project|work|portfolio|built/.test(q))
+          return "The demo portfolio highlights Ironvault Fitness, a Task Management System, Vendor Image Manager and a Food Order App. Check each project card for its scope and status.";
+        if (/experience|job|company/.test(q))
+          return "The portfolio lists Junior Software Developer experience at Hourglass Essentials Pvt. Ltd. from June 2025, and web development training at Apponix Technologies from February to August 2024.";
+        if (/contact|hire|email|reach/.test(q))
+          return "Use the contact section to prepare an email, or visit the GitHub profile linked on the page. Replace the placeholder email before publishing.";
+        if (/hello|hi|hey/.test(q))
+          return "Hello! Ask me about skills, projects, experience or how to contact Shaik.";
+        return "I can answer questions about the skills, projects, experience and contact details shown on this demo portfolio. Try asking about one of those topics.";
+      }
+      $("#chatForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = $("#chatInput"),
+          q = input.value.trim();
+        if (!q) return;
+        const body = $("#chatBody");
+        const u = document.createElement("div");
+        u.className = "bubble user";
+        u.textContent = q;
+        body.append(u);
+        const a = document.createElement("div");
+        a.className = "bubble";
+        a.textContent = reply(q);
+        body.append(a);
+        input.value = "";
+        body.scrollTop = body.scrollHeight;
+      });
+      $("#contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const d = new FormData(e.target);
+        const subject = encodeURIComponent(
+          "Portfolio enquiry from " + d.get("name"),
+        );
+        const body = encodeURIComponent(
+          "Name: " +
+            d.get("name") +
+            "\nEmail: " +
+            d.get("email") +
+            "\n\n" +
+            d.get("message"),
+        );
+        $("#formNote").textContent =
+          "Opening your email app. Replace hello@example.com in index.html with your real email.";
+        window.location.href =
+          "mailto:hello@example.com?subject=" + subject + "&body=" + body;
+      });
+    </script>
+  </body>
+</html>
